@@ -1,0 +1,580 @@
+.education-mini {
+  padding: 1.5rem;
+}
+
+.education-mini h3 {
+  font-size: 1.2rem;
+}
+
+.edu-content .college-name {
+  font-size: 1rem;
+}
+
+.edu-content .degree-info {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.edu-content .coursework-title {
+  font-size: 0.85rem;
+}
+
+.edu-content .coursework-list {
+  font-size: 0.8rem;
+}.contact-mini h3 {
+color: #2b6cb0;
+font-size: 1.1rem;
+font-weight: 600;
+margin-bottom: 0.8rem;
+text-align: center;
+}/* Reset and Base Styles */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+line-height: 1.5;
+color: #2d3748;
+background-color: #f7fafc;
+}
+
+.container {
+max-width: 1000px;
+margin: 0 auto;
+padding: 0 1.5rem;
+}
+
+/* Header */
+header {
+background: #2b6cb0;
+padding: 0.75rem 0;
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+max-width: 1000px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 1.5rem;
+}
+
+.nav-brand {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+
+.logo {
+font-size: 1.3rem;
+}
+
+.brand-name {
+color: white;
+font-size: 1.1rem;
+font-weight: 600;
+}
+
+.nav-links {
+display: flex;
+list-style: none;
+gap: 1.2rem;
+}
+
+.nav-links a {
+color: white;
+text-decoration: none;
+font-weight: 500;
+font-size: 0.9rem;
+padding: 0.4rem 0.8rem;
+border-radius: 5px;
+transition: background-color 0.2s ease;
+}
+
+.nav-links a:hover {
+background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* About & Skills Combined Section */
+.about-skills-section {
+background: white;
+padding: 3rem 0 2rem 0;
+}
+
+.about-content {
+max-width: 1000px;
+margin: 0 auto;
+}
+
+.profile-section {
+display: flex;
+align-items: flex-start;
+gap: 2rem;
+margin-bottom: 2.5rem;
+}
+
+.profile-image-left {
+width: 140px;
+height: 140px;
+border-radius: 50%;
+border: 3px solid #e2e8f0;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+object-fit: cover;
+object-position: center top;
+flex-shrink: 0;
+}
+
+.about-text h1 {
+color: #2b6cb0;
+font-size: 1.8rem;
+font-weight: 700;
+margin-bottom: 0.8rem;
+}
+
+.about-text p {
+color: #4a5568;
+font-size: 1rem;
+line-height: 1.6;
+margin: 0;
+}
+
+.skills-content {
+margin-left: 0;
+}
+
+.skills-title {
+color: #2b6cb0;
+font-size: 1.5rem;
+font-weight: 700;
+margin-bottom: 1.5rem;
+text-align: left;
+}
+
+.skills-container-left {
+display: flex;
+flex-wrap: wrap;
+gap: 0.6rem;
+justify-content: flex-start;
+}
+
+.skill-tag {
+padding: 0.4rem 0.8rem;
+border-radius: 18px;
+font-size: 0.8rem;
+font-weight: 500;
+color: white;
+transition: transform 0.2s ease;
+}
+
+.skill-tag:hover {
+transform: translateY(-1px);
+}
+
+/* Skill Colors */
+.python { background-color: #3776ab; }
+.java { background-color: #ed8b00; }
+.react { background-color: #61dafb; color: #2d3748; }
+.django { background-color: #092e20; }
+.sql { background-color: #336791; }
+.git { background-color: #f05032; }
+.spring { background-color: #6db33f; }
+.pandas { background-color: #150458; }
+.sklearn { background-color: #f7931e; }
+.numpy { background-color: #013243; }
+.neural { background-color: #ff6b6b; }
+.csharp { background-color: #239120; }
+.aspnet { background-color: #512bd4; }
+.mysql { background-color: #00758f; }
+.oracle { background-color: #f80000; }
+.html { background-color: #e34c26; }
+.smss { background-color: #cc2927; }
+.jira { background-color: #0052cc; }
+.jenkins { background-color: #d4e8fc; color: #2d3748; }
+
+/* Projects Section */
+.projects-section {
+padding: 2rem 0;
+background: #f8f9fa;
+}
+
+.projects-preview {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 1rem;
+margin-bottom: 1.5rem;
+}
+
+.project-mini {
+background: white;
+padding: 1rem;
+border-radius: 8px;
+text-align: center;
+border: 1px solid #e2e8f0;
+transition: transform 0.2s ease;
+}
+
+.project-mini:hover {
+transform: translateY(-2px);
+}
+
+.project-mini h4 {
+color: #2b6cb0;
+font-size: 0.9rem;
+margin-bottom: 0.5rem;
+font-weight: 600;
+}
+
+.project-mini p {
+color: #718096;
+font-size: 0.75rem;
+}
+
+.projects-link {
+text-align: center;
+}
+
+/* Bottom Section */
+.bottom-section {
+padding: 2rem 0 1.5rem 0;
+background: white;
+}
+
+.bottom-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 2rem;
+max-width: 800px;
+margin: 0 auto;
+}
+
+.education-mini {
+background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+padding: 1.8rem;
+border-radius: 12px;
+border: 2px solid #3b82f6;
+box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15);
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.education-mini:hover {
+transform: translateY(-3px);
+box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
+}
+
+.education-mini h3 {
+color: #1e40af;
+font-size: 1.3rem;
+font-weight: 700;
+margin-bottom: 1rem;
+text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+}
+
+.education-mini h3::before {
+content: "🎓";
+font-size: 1.5rem;
+}
+
+.edu-content {
+text-align: center;
+}
+
+.edu-content .college-name {
+color: #1e40af;
+font-size: 1.1rem;
+font-weight: 700;
+display: block;
+margin-bottom: 0.8rem;
+}
+
+.edu-content .degree-info {
+color: #3b82f6;
+font-size: 0.95rem;
+font-weight: 600;
+margin-bottom: 1rem;
+padding: 0.5rem 1rem;
+background: rgba(59, 130, 246, 0.1);
+border-radius: 20px;
+display: inline-block;
+}
+
+.edu-content .coursework {
+margin-top: 1rem;
+}
+
+.edu-content .coursework-title {
+color: #1e40af;
+font-size: 0.9rem;
+font-weight: 600;
+margin-bottom: 0.5rem;
+}
+
+.edu-content .coursework-list {
+color: #6b7280;
+font-size: 0.85rem;
+line-height: 1.5;
+}
+
+/* Contact Buttons */
+.contact-buttons {
+display: flex;
+flex-direction: column;
+gap: 0.6rem;
+align-items: center;
+}
+
+.btn-contact {
+display: inline-block;
+padding: 0.5rem 1.2rem;
+border-radius: 6px;
+text-decoration: none;
+font-weight: 500;
+font-size: 0.8rem;
+color: white;
+text-align: center;
+min-width: 100px;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-contact:hover {
+transform: translateY(-1px);
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-contact.email {
+background: #48bb78;
+}
+
+.btn-contact.github {
+background: #24292e;
+}
+
+.btn-contact.linkedin {
+background: #0077b5;
+}
+
+/* Secondary Button */
+.btn-secondary {
+display: inline-block;
+background: #2b6cb0;
+color: white;
+padding: 0.6rem 1.2rem;
+border-radius: 6px;
+text-decoration: none;
+font-weight: 500;
+font-size: 0.85rem;
+transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+background: #2c5aa0;
+}
+
+/* Footer */
+footer {
+background: #2b6cb0;
+color: white;
+text-align: center;
+padding: 1rem 0;
+font-size: 0.8rem;
+}
+
+/* Bottom Info Bar */
+.bottom-info-bar {
+background: #2b6cb0;
+color: white;
+padding: 1.5rem 0;
+text-align: center;
+}
+
+.info-content p {
+margin: 0.3rem 0;
+font-size: 0.95rem;
+}
+
+.info-content p:first-child {
+font-weight: 600;
+}
+
+/* Projects Page Styles */
+.projects-section-full {
+background: white;
+padding: 3rem 0;
+min-height: 70vh;
+}
+
+.projects-grid {
+display: grid;
+gap: 1.5rem;
+max-width: 900px;
+margin: 0 auto;
+}
+
+.project-card {
+background: white;
+border-radius: 8px;
+padding: 1.5rem;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+border: 1px solid #e2e8f0;
+border-left: 4px solid #2b6cb0;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h3 {
+color: #2b6cb0;
+font-size: 1.125rem;
+font-weight: 600;
+margin-bottom: 0.75rem;
+}
+
+.project-card p {
+color: #4a5568;
+margin: 0.5rem 0;
+line-height: 1.6;
+font-size: 0.9rem;
+}
+
+.project-card strong {
+color: #2d3748;
+}
+
+.project-link {
+display: inline-block;
+background: #2b6cb0;
+color: white;
+padding: 0.5rem 1rem;
+border-radius: 6px;
+text-decoration: none;
+font-weight: 500;
+font-size: 0.875rem;
+margin-top: 0.75rem;
+transition: background-color 0.2s ease;
+}
+
+.project-link:hover {
+background: #2c5aa0;
+}
+
+.back-home {
+text-align: center;
+margin-top: 2rem;
+padding-top: 1.5rem;
+border-top: 1px solid #e2e8f0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.container {
+  padding: 0 1rem;
+}
+
+nav {
+  padding: 0 1rem;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.nav-links {
+  gap: 0.8rem;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.about-skills-section {
+  padding: 2rem 0 1.5rem 0;
+}
+
+.profile-section {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.profile-image-left {
+  width: 100px;
+  height: 100px;
+}
+
+.about-text h1 {
+  font-size: 1.5rem;
+}
+
+.about-text p {
+  font-size: 0.9rem;
+}
+
+.skills-title {
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.skills-container-left {
+  justify-content: center;
+}
+
+.skills-section {
+  padding: 2rem 0 1.5rem 0;
+}
+
+.projects-section {
+  padding: 1.5rem 0;
+}
+
+.bottom-section {
+  padding: 1.5rem 0 1rem 0;
+}
+
+.skills-container {
+  gap: 0.4rem;
+}
+
+.skill-tag {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+}
+
+.projects-preview {
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+
+.bottom-grid {
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.contact-buttons {
+  gap: 0.5rem;
+}
+
+.btn-contact {
+  font-size: 0.75rem;
+  padding: 0.4rem 1rem;
+}
+}
