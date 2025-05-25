@@ -178,25 +178,25 @@ transform: translateY(-1px);
 }
 
 /* Skill Colors */
-.python { background-color: #3776ab; }
-.java { background-color: #ed8b00; }
-.react { background-color: #61dafb; color: #2d3748; }
-.django { background-color: #092e20; }
-.sql { background-color: #336791; }
-.git { background-color: #f05032; }
-.spring { background-color: #6db33f; }
-.pandas { background-color: #150458; }
-.sklearn { background-color: #f7931e; }
-.numpy { background-color: #013243; }
-.neural { background-color: #ff6b6b; }
-.csharp { background-color: #239120; }
-.aspnet { background-color: #512bd4; }
-.mysql { background-color: #00758f; }
-.oracle { background-color: #f80000; }
-.html { background-color: #e34c26; }
-.smss { background-color: #cc2927; }
-.jira { background-color: #0052cc; }
-.jenkins { background-color: #d4e8fc; color: #2d3748; }
+.python { background-color: #4a90b8; }
+.java { background-color: #d19a5c; }
+.react { background-color: #7dc4e4; color: #2d3748; }
+.django { background-color: #2d5c3e; }
+.sql { background-color: #5a7fa3; }
+.git { background-color: #d17a5c; }
+.spring { background-color: #7ba05b; }
+.pandas { background-color: #3d4b7a; }
+.sklearn { background-color: #d1a667; }
+.numpy { background-color: #4a6b7a; }
+.neural { background-color: #d17a8e; }
+.csharp { background-color: #5c8e5c; }
+.aspnet { background-color: #7a6bb8; }
+.mysql { background-color: #4a8ca3; }
+.oracle { background-color: #c67a7a; }
+.html { background-color: #d17855; }
+.smss { background-color: #b85c5c; }
+.jira { background-color: #4a7ab8; }
+.jenkins { background-color: #a3b8d1; color: #2d3748; }
 
 /* Projects Section */
 .projects-section {
