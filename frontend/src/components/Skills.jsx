@@ -20,15 +20,20 @@ const Skills = () => {
         { name: "GCP", icon: "☁️", color: "from-blue-400 to-red-500" },
         { name: "AWS", icon: "☁️", color: "from-orange-300 to-orange-500" },
         { name: "Microservices", icon: "🧩", color: "from-purple-400 to-pink-500" },
+        { name: "Serverless", icon: "☁️", color: "from-cyan-400 to-blue-500" },
       ]
     },
     {
-      title: "Data & Tools",
+      title: "Data Science & DevOps",
       skills: [
         { name: "MySQL", icon: "🐬", color: "from-blue-300 to-blue-500" },
         { name: "Pandas", icon: "🐼", color: "from-slate-200 to-slate-400" },
         { name: "Scikit-Learn", icon: "🔬", color: "from-orange-400 to-orange-600" },
+        { name: "ML", icon: "🤖", color: "from-purple-400 to-purple-600" },
+        { name: "DL", icon: "🧠", color: "from-indigo-400 to-indigo-600" },
         { name: "Git/GitHub", icon: "📁", color: "from-slate-300 to-slate-500" },
+        { name: "GitHub Actions", icon: "🔁", color: "from-green-400 to-blue-500" },
+        { name: "Release & Versioning", icon: "🏷️", color: "from-yellow-400 to-orange-500" },
       ]
     }
   ];

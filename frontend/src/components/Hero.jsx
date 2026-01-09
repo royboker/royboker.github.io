@@ -57,7 +57,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg text-slate-400 mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed">
-              A 4th-year Software Engineering student specializing in building robust backend systems and extracting insights from data.
+              I build scalable backend systems & AI-powered solutions. 4th-year Software Engineering student passionate about creating robust, production-ready applications.
             </p>
             
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">

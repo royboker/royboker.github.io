@@ -32,9 +32,10 @@ const Experience = () => {
                     </span>
                   </h3>
                   <p className="text-blue-400 font-medium text-lg">Backend Developer</p>
+                  <p className="text-slate-500 text-sm mt-1">(Full-time, Production environment)</p>
                 </div>
                 <div className="text-slate-400 font-mono bg-slate-800 px-4 py-2 rounded-lg border border-slate-700">
-                  2025 - 2026
+                  2025 - Present
                 </div>
               </div>
 
@@ -54,7 +55,7 @@ const Experience = () => {
                     <li className="flex items-start gap-3">
                       <span className="text-purple-400 mt-1">▹</span>
                       <span>
-                        Architected and deployed <strong>AI Agents</strong> utilizing <strong>Google AI SDK</strong>, enabling automated data analysis and customer interaction flows.
+                        Architected and deployed <strong>AI Agents</strong> utilizing <strong>Google ADK</strong>, enabling automated data analysis and customer interaction flows.
                       </span>
                     </li>
                     <li className="flex items-start gap-3">
@@ -80,7 +81,7 @@ const Experience = () => {
                     <span className="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded border border-slate-700 hover:border-teal-500 transition-colors cursor-default">FastAPI</span>
                     <span className="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded border border-slate-700 hover:border-blue-400 transition-colors cursor-default">PostgreSQL</span>
                     <span className="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded border border-slate-700 hover:border-yellow-500 transition-colors cursor-default">GCP</span>
-                    <span className="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded border border-slate-700 hover:border-purple-400 transition-colors cursor-default">Google AI SDK</span>
+                    <span className="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded border border-slate-700 hover:border-purple-400 transition-colors cursor-default">Google ADK</span>
                     <span className="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded border border-slate-700 hover:border-orange-500 transition-colors cursor-default">Docker</span>
                     <span className="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded border border-slate-700 hover:border-green-500 transition-colors cursor-default">AI Agents</span>
                     <span className="px-3 py-1 bg-slate-800 text-slate-300 text-sm rounded border border-slate-700 hover:border-slate-400 transition-colors cursor-default">GitHub</span>

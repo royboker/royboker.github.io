@@ -29,15 +29,19 @@
     @apply relative p-[1px] overflow-hidden rounded-xl;
   }
   
-  /* Base spinning animation pseudo-element */
+  /* Base spinning animation pseudo-element - Blue default */
   .neon-border::before {
     content: '';
-    @apply absolute inset-[-100%] animate-spin-slow opacity-0 transition-opacity duration-300;
-    /* Default Blue */
+    position: absolute;
+    inset: -100%;
+    animation: spin 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
     background: conic-gradient(from 0deg, transparent 0deg, #3b82f6 180deg, transparent 360deg);
+    z-index: 0;
   }
   
-  /* Color Variants */
+  /* Color Variants - Override only the background color */
   .neon-border-purple::before {
     background: conic-gradient(from 0deg, transparent 0deg, #a855f7 180deg, transparent 360deg);
   }
@@ -51,14 +55,16 @@
     background: conic-gradient(from 0deg, transparent 0deg, #06b6d4 180deg, transparent 360deg);
   }
 
-  /* Show animation on hover (or always if desired, uncomment to make always visible) */
+  /* Show animation on hover for all variants */
   .neon-border:hover::before {
-    @apply opacity-100;
+    opacity: 1;
   }
   
   /* Inner container to sit on top of the spinning border */
   .neon-inner {
-    @apply relative bg-slate-800 h-full rounded-xl z-10;
+    position: relative;
+    @apply bg-slate-800 h-full rounded-xl;
+    z-index: 1;
   }
 }
 
