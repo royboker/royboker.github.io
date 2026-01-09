@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roy Boker | Software Engineer</title>
+  <meta name="description" content="Software Engineering student specializing in backend development and data science. Explore my projects, skills, and interactive demos." />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZKJGMP6SPF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZKJGMP6SPF');
+  </script>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Roy Boker | Software Engineer" />
+  <meta property="og:description" content="Backend & Data Science specialist. View my projects and interactive apps." />
+  <meta property="og:image" content="https://royboker.github.io/assets/images/profile.jpg" />
+  <meta property="og:url" content="https://royboker.github.io/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <span class="logo-icon">🔥</span>
+        <span>Roy Boker</span>
+      </a>
+
+      <nav class="nav">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+
+        <div class="nav-dropdown">
+          <span class="nav-link nav-dropdown-toggle">Apps</span>
+          <div class="nav-dropdown-menu">
+            <a href="apps/converter/" class="nav-dropdown-item">
+              <span class="nav-dropdown-icon">🔄</span>
+              <span>Unit Converter</span>
+            </a>
+            <a href="apps/game/" class="nav-dropdown-item">
+              <span class="nav-dropdown-icon">🎮</span>
+              <span>Memory Game</span>
+            </a>
+            <a href="apps/github-stats/" class="nav-dropdown-item">
+              <span class="nav-dropdown-icon">📊</span>
+              <span>GitHub Stats</span>
+            </a>
+            <a href="apps/playground/" class="nav-dropdown-item">
+              <span class="nav-dropdown-icon">💻</span>
+              <span>Code Playground</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn btn-primary btn-sm">Contact</a>
+      </nav>
+
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#skills" class="mobile-nav-link">Skills</a>
+    <a href="projects.html" class="mobile-nav-link">Projects</a>
+    <a href="apps/" class="mobile-nav-link">Interactive Apps</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text" data-animate="fade-right">
+            <p class="hero-greeting">👋 Hello, I'm</p>
+            <h1 class="hero-title">
+              Roy Boker<br />
+              <span class="hero-title-highlight">
+                <span class="typewriter" data-texts="Backend Developer, Data Science Enthusiast, Problem Solver">Backend Developer</span><span class="typewriter-cursor"></span>
+              </span>
+            </h1>
+            <p class="hero-description">
+              A 3rd-year Software Engineering student specializing in backend development and data science.
+              I build robust systems with Python, Java, and modern frameworks.
+            </p>
+            <div class="hero-cta">
+              <a href="#projects-preview" class="btn btn-primary btn-lg">View Projects</a>
+              <a href="#contact" class="btn btn-outline btn-lg">Get in Touch</a>
+            </div>
+          </div>
+
+          <div class="hero-image" data-animate="fade-left">
+            <div class="hero-avatar-wrapper">
+              <img src="assets/images/profile.jpg" alt="Roy Boker" class="avatar avatar-lg" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="text-center" data-animate="fade-up">
+          <h2 class="section-title">About Me</h2>
+          <div class="divider divider-center"></div>
+        </div>
+
+        <div class="about-grid" data-animate="fade-up">
+          <div class="about-image">
+            <div class="card">
+              <div class="card-body">
+                <div class="education-card">
+                  <div class="education-icon">🎓</div>
+                  <div class="education-details">
+                    <h4>SCE - Sami Shamoon College</h4>
+                    <p class="education-meta">B.Sc. Software Engineering • 3rd Year • GPA: 87</p>
+                    <div class="education-courses" data-animate-stagger>
+                      <span class="badge">Data Structures (80)</span>
+                      <span class="badge badge-green">Intro to CS (98)</span>
+                      <span class="badge badge-purple">OOP (91)</span>
+                      <span class="badge badge-orange">Machine Learning (90)</span>
+                      <span class="badge badge-cyan">Databases (93)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-content">
+            <h3>Building the Future, One Line of Code at a Time</h3>
+            <p>
+              I'm passionate about creating efficient, scalable backend systems and extracting insights from data.
+              My journey in software engineering has equipped me with a strong foundation in multiple programming
+              paradigms and a deep understanding of system design principles.
+            </p>
+            <p>
+              Currently seeking a student position where I can apply my skills in Python, Java, and machine learning
+              while continuing to grow as a developer. I thrive in collaborative environments and enjoy tackling
+              complex problems that require creative solutions.
+            </p>
+            <p>
+              Beyond coding, I believe in building clean, maintainable software that makes a real impact.
+              Check out my <a href="apps/">interactive demos</a> to see my skills in action!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <div class="text-center" data-animate="fade-up">
+          <h2 class="section-title">Skills & Technologies</h2>
+          <div class="divider divider-center"></div>
+          <p class="section-subtitle">Technologies I work with to bring ideas to life</p>
+        </div>
+
+        <div class="skills-category" data-animate="fade-up">
+          <h3 class="skills-category-title">Languages</h3>
+          <div class="skills-grid" data-animate-stagger>
+            <span class="skill-tag skill-python">🐍 Python</span>
+            <span class="skill-tag skill-java">☕ Java</span>
+            <span class="skill-tag skill-csharp">🔷 C#</span>
+            <span class="skill-tag skill-sql">🗃️ SQL</span>
+            <span class="skill-tag skill-html">🌐 HTML/CSS</span>
+            <span class="skill-tag skill-javascript">⚡ JavaScript</span>
+          </div>
+        </div>
+
+        <div class="skills-category" data-animate="fade-up">
+          <h3 class="skills-category-title">Frameworks & Libraries</h3>
+          <div class="skills-grid" data-animate-stagger>
+            <span class="skill-tag">🎸 Django</span>
+            <span class="skill-tag">🍃 Spring Boot</span>
+            <span class="skill-tag">🔷 ASP.NET</span>
+            <span class="skill-tag">🐼 Pandas</span>
+            <span class="skill-tag">🔬 Scikit-Learn</span>
+            <span class="skill-tag">🔢 NumPy</span>
+            <span class="skill-tag">🧠 Neural Networks</span>
+          </div>
+        </div>
+
+        <div class="skills-category" data-animate="fade-up">
+          <h3 class="skills-category-title">Databases & Tools</h3>
+          <div class="skills-grid" data-animate-stagger>
+            <span class="skill-tag skill-sql">🐬 MySQL</span>
+            <span class="skill-tag">🔶 Oracle</span>
+            <span class="skill-tag">📊 SQL Server</span>
+            <span class="skill-tag skill-git">📁 Git/GitHub</span>
+            <span class="skill-tag">📋 Jira</span>
+            <span class="skill-tag">🔧 Jenkins</span>
+            <span class="skill-tag skill-aws">☁️ AWS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Preview Section -->
+    <section id="projects-preview" class="section">
+      <div class="container">
+        <div class="text-center" data-animate="fade-up">
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="divider divider-center"></div>
+          <p class="section-subtitle">Some of my recent work</p>
+        </div>
+
+        <div class="projects-grid" data-animate="fade-up">
+          <div class="card card-accent hover-lift">
+            <div class="card-body project-card">
+              <h3 class="card-title">🏨 Hotel Management System</h3>
+              <p class="card-text">
+                Full-stack hotel management solution with booking, room management, and reporting features.
+              </p>
+              <div class="project-tech">
+                <span class="badge">Java</span>
+                <span class="badge badge-green">Spring Boot</span>
+                <span class="badge badge-purple">MySQL</span>
+                <span class="badge badge-orange">AWS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-accent-green hover-lift">
+            <div class="card-body project-card">
+              <h3 class="card-title">📚 Digital Library App</h3>
+              <p class="card-text">
+                Web application for managing digital book collections with user authentication and search.
+              </p>
+              <div class="project-tech">
+                <span class="badge">C#</span>
+                <span class="badge badge-green">ASP.NET</span>
+                <span class="badge badge-purple">MVC</span>
+                <span class="badge badge-orange">SQL Server</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-accent-purple hover-lift">
+            <div class="card-body project-card">
+              <h3 class="card-title">🤖 Heart Attack Prediction ML</h3>
+              <p class="card-text">
+                Machine learning model that predicts heart attack risk based on patient health data.
+              </p>
+              <div class="project-tech">
+                <span class="badge">Python</span>
+                <span class="badge badge-green">Scikit-Learn</span>
+                <span class="badge badge-purple">Pandas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin-top: var(--space-10);">
+          <a href="projects.html" class="btn btn-primary btn-lg">View All Projects →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Apps Section -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="text-center" data-animate="fade-up">
+          <h2 class="section-title">Interactive Demos</h2>
+          <div class="divider divider-center"></div>
+          <p class="section-subtitle">Try out these mini-apps I built to showcase my skills</p>
+        </div>
+
+        <div class="projects-grid" data-animate="fade-up">
+          <a href="apps/converter/" class="card hover-lift" style="text-decoration: none;">
+            <div class="card-body text-center">
+              <div style="font-size: 3rem; margin-bottom: var(--space-4);">🔄</div>
+              <h3 class="card-title">Unit Converter</h3>
+              <p class="card-text">Convert currencies, temperatures, lengths, and more with live exchange rates.</p>
+              <span class="badge badge-green">Try it →</span>
+            </div>
+          </a>
+
+          <a href="apps/game/" class="card hover-lift" style="text-decoration: none;">
+            <div class="card-body text-center">
+              <div style="font-size: 3rem; margin-bottom: var(--space-4);">🎮</div>
+              <h3 class="card-title">Memory Game</h3>
+              <p class="card-text">Test your memory with this fun card-matching game. Beat your high score!</p>
+              <span class="badge badge-purple">Play now →</span>
+            </div>
+          </a>
+
+          <a href="apps/github-stats/" class="card hover-lift" style="text-decoration: none;">
+            <div class="card-body text-center">
+              <div style="font-size: 3rem; margin-bottom: var(--space-4);">📊</div>
+              <h3 class="card-title">GitHub Dashboard</h3>
+              <p class="card-text">Live stats from my GitHub profile - repos, languages, and activity.</p>
+              <span class="badge badge-orange">View stats →</span>
+            </div>
+          </a>
+
+          <a href="apps/playground/" class="card hover-lift" style="text-decoration: none;">
+            <div class="card-body text-center">
+              <div style="font-size: 3rem; margin-bottom: var(--space-4);">💻</div>
+              <h3 class="card-title">Code Playground</h3>
+              <p class="card-text">Write HTML, CSS, and JavaScript with live preview. Like a mini CodePen!</p>
+              <span class="badge badge-cyan">Start coding →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="text-center" data-animate="fade-up">
+          <h2 class="section-title">Get In Touch</h2>
+          <div class="divider divider-center"></div>
+          <p class="section-subtitle">Have a question or want to work together? I'd love to hear from you!</p>
+        </div>
+
+        <div class="contact-grid" data-animate="fade-up">
+          <div class="contact-info">
+            <h3>Let's Connect</h3>
+            <p>
+              I'm currently looking for student positions in backend development or data science.
+              Whether you have an opportunity, a question, or just want to say hi, feel free to reach out!
+            </p>
+
+            <div class="contact-methods">
+              <a href="mailto:royboker15@gmail.com" class="contact-method">
+                <span class="contact-method-icon">📧</span>
+                <div>
+                  <strong>Email</strong>
+                  <p style="margin: 0; font-size: var(--text-sm); color: var(--text-secondary);">royboker15@gmail.com</p>
+                </div>
+              </a>
+
+              <a href="https://linkedin.com/in/roy-boker" target="_blank" class="contact-method">
+                <span class="contact-method-icon">💼</span>
+                <div>
+                  <strong>LinkedIn</strong>
+                  <p style="margin: 0; font-size: var(--text-sm); color: var(--text-secondary);">Connect with me</p>
+                </div>
+              </a>
+
+              <a href="https://github.com/royboker" target="_blank" class="contact-method">
+                <span class="contact-method-icon">🐙</span>
+                <div>
+                  <strong>GitHub</strong>
+                  <p style="margin: 0; font-size: var(--text-sm); color: var(--text-secondary);">View my code</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required minlength="2" />
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea id="message" name="message" class="form-textarea" placeholder="Your message..." required minlength="10"></textarea>
+                </div>
+
+                <div id="form-success" class="form-success" style="display: none;"></div>
+                <div id="form-error" class="form-error" style="display: none;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo" style="color: var(--text-inverse);">
+            <span class="logo-icon">🔥</span>
+            <span>Roy Boker</span>
+          </a>
+          <p>Software Engineering student passionate about backend development and data science.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <div class="footer-links">
+            <a href="#about" class="footer-link">About</a>
+            <a href="#skills" class="footer-link">Skills</a>
+            <a href="projects.html" class="footer-link">Projects</a>
+            <a href="#contact" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Interactive Apps</h4>
+          <div class="footer-links">
+            <a href="apps/converter/" class="footer-link">Unit Converter</a>
+            <a href="apps/game/" class="footer-link">Memory Game</a>
+            <a href="apps/github-stats/" class="footer-link">GitHub Stats</a>
+            <a href="apps/playground/" class="footer-link">Code Playground</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Roy Boker. All rights reserved.</p>
+        <div class="social-links">
+          <a href="mailto:royboker15@gmail.com" class="social-link social-link-email" aria-label="Email">📧</a>
+          <a href="https://linkedin.com/in/roy-boker" target="_blank" class="social-link social-link-linkedin" aria-label="LinkedIn">💼</a>
+          <a href="https://github.com/royboker" target="_blank" class="social-link social-link-github" aria-label="GitHub">🐙</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- Scripts -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

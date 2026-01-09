@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Apps | Roy Boker</title>
+  <meta name="description" content="Try out these interactive demos I built - Unit Converter, Memory Game, GitHub Stats, and Code Playground." />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .apps-hero {
+      padding-top: calc(70px + var(--space-12));
+      padding-bottom: var(--space-12);
+      background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--bg-primary) 50%, var(--color-accent-purple-light) 100%);
+      text-align: center;
+    }
+
+    .apps-hero h1 {
+      font-size: var(--text-5xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .apps-hero p {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-8);
+      margin-top: var(--space-12);
+    }
+
+    .app-card {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .app-card .card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-icon {
+      font-size: 4rem;
+      margin-bottom: var(--space-4);
+    }
+
+    .app-card .card-title {
+      margin-bottom: var(--space-2);
+    }
+
+    .app-card .card-text {
+      flex: 1;
+      margin-bottom: var(--space-4);
+    }
+
+    .app-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: auto;
+    }
+
+    .app-cta {
+      margin-top: var(--space-4);
+      display: flex;
+      justify-content: flex-end;
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../" class="logo">
+        <span class="logo-icon">🔥</span>
+        <span>Roy Boker</span>
+      </a>
+
+      <nav class="nav">
+        <a href="../index.html#about" class="nav-link">About</a>
+        <a href="../index.html#skills" class="nav-link">Skills</a>
+        <a href="../projects.html" class="nav-link">Projects</a>
+        <a href="./" class="nav-link active">Apps</a>
+        <a href="../index.html#contact" class="btn btn-primary btn-sm">Contact</a>
+      </nav>
+
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <a href="../index.html#about" class="mobile-nav-link">About</a>
+    <a href="../index.html#skills" class="mobile-nav-link">Skills</a>
+    <a href="../projects.html" class="mobile-nav-link">Projects</a>
+    <a href="./" class="mobile-nav-link">Apps</a>
+    <a href="../index.html#contact" class="mobile-nav-link">Contact</a>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="apps-hero">
+      <div class="container">
+        <h1 data-animate="fade-up">Interactive Apps</h1>
+        <div class="divider divider-center" data-animate="fade-up"></div>
+        <p data-animate="fade-up">
+          These mini-applications showcase my JavaScript skills. Try them out!
+          All built with vanilla JavaScript - no frameworks required.
+        </p>
+      </div>
+    </section>
+
+    <!-- Apps Grid -->
+    <section class="section">
+      <div class="container">
+        <div class="apps-grid">
+          <!-- Unit Converter -->
+          <a href="converter/" class="app-card card hover-lift" data-animate="fade-up">
+            <div class="card-body">
+              <div class="app-icon">🔄</div>
+              <h3 class="card-title">Unit Converter</h3>
+              <p class="card-text">
+                Convert between currencies, temperatures, lengths, weights, and data sizes.
+                Features live exchange rates from the Frankfurter API.
+              </p>
+              <div class="app-features">
+                <span class="badge">JavaScript</span>
+                <span class="badge badge-green">REST API</span>
+                <span class="badge badge-purple">Real-time</span>
+              </div>
+              <div class="app-cta">
+                <span class="btn btn-primary btn-sm">Try it →</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Memory Game -->
+          <a href="game/" class="app-card card hover-lift" data-animate="fade-up">
+            <div class="card-body">
+              <div class="app-icon">🎮</div>
+              <h3 class="card-title">Memory Match Game</h3>
+              <p class="card-text">
+                Test your memory by finding matching pairs of cards.
+                Three difficulty levels, timer, move counter, and high score tracking.
+              </p>
+              <div class="app-features">
+                <span class="badge">JavaScript</span>
+                <span class="badge badge-green">CSS 3D</span>
+                <span class="badge badge-purple">LocalStorage</span>
+              </div>
+              <div class="app-cta">
+                <span class="btn btn-primary btn-sm">Play now →</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- GitHub Stats -->
+          <a href="github-stats/" class="app-card card hover-lift" data-animate="fade-up">
+            <div class="card-body">
+              <div class="app-icon">📊</div>
+              <h3 class="card-title">GitHub Dashboard</h3>
+              <p class="card-text">
+                Live statistics from my GitHub profile - repositories, languages used,
+                stars, and recent activity. Data visualized with Chart.js.
+              </p>
+              <div class="app-features">
+                <span class="badge">JavaScript</span>
+                <span class="badge badge-green">GitHub API</span>
+                <span class="badge badge-purple">Chart.js</span>
+              </div>
+              <div class="app-cta">
+                <span class="btn btn-primary btn-sm">View stats →</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Code Playground -->
+          <a href="playground/" class="app-card card hover-lift" data-animate="fade-up">
+            <div class="card-body">
+              <div class="app-icon">💻</div>
+              <h3 class="card-title">Code Playground</h3>
+              <p class="card-text">
+                Write HTML, CSS, and JavaScript with live preview - like a mini CodePen.
+                Includes preset templates and a console for debugging.
+              </p>
+              <div class="app-features">
+                <span class="badge">JavaScript</span>
+                <span class="badge badge-green">Iframe</span>
+                <span class="badge badge-purple">Live Preview</span>
+              </div>
+              <div class="app-cta">
+                <span class="btn btn-primary btn-sm">Start coding →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">Want to See the Code?</h2>
+          <p class="section-subtitle" style="margin-bottom: var(--space-8);">
+            All these apps are open source. Check out the implementation on GitHub!
+          </p>
+          <div class="flex justify-center gap-4" style="flex-wrap: wrap;">
+            <a href="https://github.com/royboker/royboker.github.io" target="_blank" class="btn btn-primary btn-lg">
+              View Source Code
+            </a>
+            <a href="../projects.html" class="btn btn-outline btn-lg">
+              See More Projects
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../" class="logo" style="color: var(--text-inverse);">
+            <span class="logo-icon">🔥</span>
+            <span>Roy Boker</span>
+          </a>
+          <p>Software Engineering student passionate about backend development and data science.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <div class="footer-links">
+            <a href="../index.html#about" class="footer-link">About</a>
+            <a href="../index.html#skills" class="footer-link">Skills</a>
+            <a href="../projects.html" class="footer-link">Projects</a>
+            <a href="../index.html#contact" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Interactive Apps</h4>
+          <div class="footer-links">
+            <a href="converter/" class="footer-link">Unit Converter</a>
+            <a href="game/" class="footer-link">Memory Game</a>
+            <a href="github-stats/" class="footer-link">GitHub Stats</a>
+            <a href="playground/" class="footer-link">Code Playground</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Roy Boker. All rights reserved.</p>
+        <div class="social-links">
+          <a href="mailto:royboker15@gmail.com" class="social-link social-link-email" aria-label="Email">📧</a>
+          <a href="https://linkedin.com/in/roy-boker" target="_blank" class="social-link social-link-linkedin" aria-label="LinkedIn">💼</a>
+          <a href="https://github.com/royboker" target="_blank" class="social-link social-link-github" aria-label="GitHub">🐙</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>

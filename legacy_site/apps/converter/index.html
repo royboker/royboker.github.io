@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unit Converter | Roy Boker</title>
+  <meta name="description" content="Convert currencies, temperatures, lengths, weights, and more with live exchange rates." />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../css/main.css" />
+  <link rel="stylesheet" href="converter.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔄</text></svg>" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../../" class="logo">
+        <span class="logo-icon">🔥</span>
+        <span>Roy Boker</span>
+      </a>
+
+      <nav class="nav">
+        <a href="../../index.html#about" class="nav-link">About</a>
+        <a href="../../projects.html" class="nav-link">Projects</a>
+        <a href="../" class="nav-link active">Apps</a>
+        <a href="../../index.html#contact" class="btn btn-primary btn-sm">Contact</a>
+      </nav>
+
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <a href="../../index.html#about" class="mobile-nav-link">About</a>
+    <a href="../../projects.html" class="mobile-nav-link">Projects</a>
+    <a href="../" class="mobile-nav-link">Apps</a>
+    <a href="../../index.html#contact" class="mobile-nav-link">Contact</a>
+  </nav>
+
+  <main class="app-main">
+    <div class="container">
+      <!-- App Header -->
+      <div class="app-header" data-animate="fade-up">
+        <a href="../" class="back-link">← Back to Apps</a>
+        <h1>🔄 Unit Converter</h1>
+        <p>Convert between different units instantly</p>
+      </div>
+
+      <!-- Converter Card -->
+      <div class="converter-card card" data-animate="fade-up">
+        <!-- Category Tabs -->
+        <div class="converter-tabs">
+          <button class="tab-btn active" data-category="currency">💱 Currency</button>
+          <button class="tab-btn" data-category="temperature">🌡️ Temperature</button>
+          <button class="tab-btn" data-category="length">📏 Length</button>
+          <button class="tab-btn" data-category="weight">⚖️ Weight</button>
+          <button class="tab-btn" data-category="data">💾 Data</button>
+        </div>
+
+        <div class="card-body">
+          <!-- Currency Converter -->
+          <div class="converter-panel active" id="currency-panel">
+            <div class="converter-row">
+              <div class="converter-input-group">
+                <label class="form-label">From</label>
+                <input type="number" id="currency-from-value" class="form-input converter-input" value="1" min="0" />
+                <select id="currency-from-unit" class="form-select">
+                  <option value="USD">🇺🇸 USD - US Dollar</option>
+                  <option value="EUR">🇪🇺 EUR - Euro</option>
+                  <option value="GBP">🇬🇧 GBP - British Pound</option>
+                  <option value="ILS">🇮🇱 ILS - Israeli Shekel</option>
+                  <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+                  <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                  <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+                  <option value="CHF">🇨🇭 CHF - Swiss Franc</option>
+                </select>
+              </div>
+
+              <button class="swap-btn" id="currency-swap" aria-label="Swap currencies">⇄</button>
+
+              <div class="converter-input-group">
+                <label class="form-label">To</label>
+                <input type="number" id="currency-to-value" class="form-input converter-input" readonly />
+                <select id="currency-to-unit" class="form-select">
+                  <option value="EUR">🇪🇺 EUR - Euro</option>
+                  <option value="USD">🇺🇸 USD - US Dollar</option>
+                  <option value="GBP">🇬🇧 GBP - British Pound</option>
+                  <option value="ILS">🇮🇱 ILS - Israeli Shekel</option>
+                  <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+                  <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                  <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+                  <option value="CHF">🇨🇭 CHF - Swiss Franc</option>
+                </select>
+              </div>
+            </div>
+            <p class="rate-info" id="currency-rate">Loading exchange rates...</p>
+          </div>
+
+          <!-- Temperature Converter -->
+          <div class="converter-panel" id="temperature-panel">
+            <div class="converter-row">
+              <div class="converter-input-group">
+                <label class="form-label">From</label>
+                <input type="number" id="temp-from-value" class="form-input converter-input" value="0" />
+                <select id="temp-from-unit" class="form-select">
+                  <option value="celsius">°C - Celsius</option>
+                  <option value="fahrenheit">°F - Fahrenheit</option>
+                  <option value="kelvin">K - Kelvin</option>
+                </select>
+              </div>
+
+              <button class="swap-btn" id="temp-swap" aria-label="Swap units">⇄</button>
+
+              <div class="converter-input-group">
+                <label class="form-label">To</label>
+                <input type="number" id="temp-to-value" class="form-input converter-input" readonly />
+                <select id="temp-to-unit" class="form-select">
+                  <option value="fahrenheit">°F - Fahrenheit</option>
+                  <option value="celsius">°C - Celsius</option>
+                  <option value="kelvin">K - Kelvin</option>
+                </select>
+              </div>
+            </div>
+            <p class="rate-info" id="temp-formula">Formula: °F = (°C × 9/5) + 32</p>
+          </div>
+
+          <!-- Length Converter -->
+          <div class="converter-panel" id="length-panel">
+            <div class="converter-row">
+              <div class="converter-input-group">
+                <label class="form-label">From</label>
+                <input type="number" id="length-from-value" class="form-input converter-input" value="1" min="0" />
+                <select id="length-from-unit" class="form-select">
+                  <option value="meter">Meters (m)</option>
+                  <option value="kilometer">Kilometers (km)</option>
+                  <option value="centimeter">Centimeters (cm)</option>
+                  <option value="millimeter">Millimeters (mm)</option>
+                  <option value="mile">Miles (mi)</option>
+                  <option value="yard">Yards (yd)</option>
+                  <option value="foot">Feet (ft)</option>
+                  <option value="inch">Inches (in)</option>
+                </select>
+              </div>
+
+              <button class="swap-btn" id="length-swap" aria-label="Swap units">⇄</button>
+
+              <div class="converter-input-group">
+                <label class="form-label">To</label>
+                <input type="number" id="length-to-value" class="form-input converter-input" readonly />
+                <select id="length-to-unit" class="form-select">
+                  <option value="foot">Feet (ft)</option>
+                  <option value="meter">Meters (m)</option>
+                  <option value="kilometer">Kilometers (km)</option>
+                  <option value="centimeter">Centimeters (cm)</option>
+                  <option value="millimeter">Millimeters (mm)</option>
+                  <option value="mile">Miles (mi)</option>
+                  <option value="yard">Yards (yd)</option>
+                  <option value="inch">Inches (in)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weight Converter -->
+          <div class="converter-panel" id="weight-panel">
+            <div class="converter-row">
+              <div class="converter-input-group">
+                <label class="form-label">From</label>
+                <input type="number" id="weight-from-value" class="form-input converter-input" value="1" min="0" />
+                <select id="weight-from-unit" class="form-select">
+                  <option value="kilogram">Kilograms (kg)</option>
+                  <option value="gram">Grams (g)</option>
+                  <option value="milligram">Milligrams (mg)</option>
+                  <option value="pound">Pounds (lb)</option>
+                  <option value="ounce">Ounces (oz)</option>
+                  <option value="ton">Metric Tons (t)</option>
+                </select>
+              </div>
+
+              <button class="swap-btn" id="weight-swap" aria-label="Swap units">⇄</button>
+
+              <div class="converter-input-group">
+                <label class="form-label">To</label>
+                <input type="number" id="weight-to-value" class="form-input converter-input" readonly />
+                <select id="weight-to-unit" class="form-select">
+                  <option value="pound">Pounds (lb)</option>
+                  <option value="kilogram">Kilograms (kg)</option>
+                  <option value="gram">Grams (g)</option>
+                  <option value="milligram">Milligrams (mg)</option>
+                  <option value="ounce">Ounces (oz)</option>
+                  <option value="ton">Metric Tons (t)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Converter -->
+          <div class="converter-panel" id="data-panel">
+            <div class="converter-row">
+              <div class="converter-input-group">
+                <label class="form-label">From</label>
+                <input type="number" id="data-from-value" class="form-input converter-input" value="1" min="0" />
+                <select id="data-from-unit" class="form-select">
+                  <option value="byte">Bytes (B)</option>
+                  <option value="kilobyte">Kilobytes (KB)</option>
+                  <option value="megabyte">Megabytes (MB)</option>
+                  <option value="gigabyte">Gigabytes (GB)</option>
+                  <option value="terabyte">Terabytes (TB)</option>
+                  <option value="bit">Bits (b)</option>
+                </select>
+              </div>
+
+              <button class="swap-btn" id="data-swap" aria-label="Swap units">⇄</button>
+
+              <div class="converter-input-group">
+                <label class="form-label">To</label>
+                <input type="number" id="data-to-value" class="form-input converter-input" readonly />
+                <select id="data-to-unit" class="form-select">
+                  <option value="megabyte">Megabytes (MB)</option>
+                  <option value="byte">Bytes (B)</option>
+                  <option value="kilobyte">Kilobytes (KB)</option>
+                  <option value="gigabyte">Gigabytes (GB)</option>
+                  <option value="terabyte">Terabytes (TB)</option>
+                  <option value="bit">Bits (b)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Info -->
+      <div class="tech-info" data-animate="fade-up">
+        <h3>How It Works</h3>
+        <p>This converter uses the <strong>Frankfurter API</strong> for real-time currency exchange rates. All other conversions are calculated locally using standard conversion formulas.</p>
+        <div class="tech-badges">
+          <span class="badge">JavaScript</span>
+          <span class="badge badge-green">REST API</span>
+          <span class="badge badge-purple">Real-time Data</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Roy Boker. All rights reserved.</p>
+        <div class="social-links">
+          <a href="mailto:royboker15@gmail.com" class="social-link social-link-email" aria-label="Email">📧</a>
+          <a href="https://linkedin.com/in/roy-boker" target="_blank" class="social-link social-link-linkedin" aria-label="LinkedIn">💼</a>
+          <a href="https://github.com/royboker" target="_blank" class="social-link social-link-github" aria-label="GitHub">🐙</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../js/navigation.js" type="module"></script>
+  <script src="converter.js"></script>
+</body>
+</html>

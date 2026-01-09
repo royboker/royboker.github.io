@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Playground | Roy Boker</title>
+  <meta name="description" content="Write HTML, CSS, and JavaScript with live preview. A mini CodePen-like editor." />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../css/main.css" />
+  <link rel="stylesheet" href="playground.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../../" class="logo">
+        <span class="logo-icon">🔥</span>
+        <span>Roy Boker</span>
+      </a>
+
+      <nav class="nav">
+        <a href="../../index.html#about" class="nav-link">About</a>
+        <a href="../../projects.html" class="nav-link">Projects</a>
+        <a href="../" class="nav-link active">Apps</a>
+        <a href="../../index.html#contact" class="btn btn-primary btn-sm">Contact</a>
+      </nav>
+
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <a href="../../index.html#about" class="mobile-nav-link">About</a>
+    <a href="../../projects.html" class="mobile-nav-link">Projects</a>
+    <a href="../" class="mobile-nav-link">Apps</a>
+    <a href="../../index.html#contact" class="mobile-nav-link">Contact</a>
+  </nav>
+
+  <main class="playground-main">
+    <!-- Toolbar -->
+    <div class="playground-toolbar">
+      <div class="toolbar-left">
+        <a href="../" class="back-link">← Back</a>
+        <h1>💻 Code Playground</h1>
+      </div>
+      <div class="toolbar-right">
+        <select id="template-select" class="template-select">
+          <option value="blank">Blank</option>
+          <option value="hello">Hello World</option>
+          <option value="button">Interactive Button</option>
+          <option value="animation">CSS Animation</option>
+          <option value="form">Form Example</option>
+        </select>
+        <button id="run-btn" class="btn btn-primary btn-sm">▶ Run</button>
+        <button id="clear-btn" class="btn btn-secondary btn-sm">Clear</button>
+      </div>
+    </div>
+
+    <!-- Editor Container -->
+    <div class="playground-container">
+      <!-- Editors Panel -->
+      <div class="editors-panel">
+        <!-- HTML Editor -->
+        <div class="editor-section">
+          <div class="editor-header">
+            <span class="editor-label html-label">HTML</span>
+          </div>
+          <textarea id="html-editor" class="code-editor" spellcheck="false" placeholder="<!-- Write your HTML here -->
+<div class='container'>
+  <h1>Hello World!</h1>
+</div>"></textarea>
+        </div>
+
+        <!-- CSS Editor -->
+        <div class="editor-section">
+          <div class="editor-header">
+            <span class="editor-label css-label">CSS</span>
+          </div>
+          <textarea id="css-editor" class="code-editor" spellcheck="false" placeholder="/* Write your CSS here */
+.container {
+  text-align: center;
+}"></textarea>
+        </div>
+
+        <!-- JS Editor -->
+        <div class="editor-section">
+          <div class="editor-header">
+            <span class="editor-label js-label">JavaScript</span>
+          </div>
+          <textarea id="js-editor" class="code-editor" spellcheck="false" placeholder="// Write your JavaScript here
+console.log('Hello!')"></textarea>
+        </div>
+      </div>
+
+      <!-- Preview Panel -->
+      <div class="preview-panel">
+        <div class="preview-header">
+          <span class="preview-label">Preview</span>
+          <span class="auto-run-toggle">
+            <input type="checkbox" id="auto-run" checked />
+            <label for="auto-run">Auto-run</label>
+          </span>
+        </div>
+        <iframe id="preview-frame" class="preview-frame" sandbox="allow-scripts allow-modals"></iframe>
+        <div class="console-panel">
+          <div class="console-header">
+            <span>Console</span>
+            <button id="clear-console" class="btn btn-ghost btn-sm">Clear</button>
+          </div>
+          <div id="console-output" class="console-output"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="playground.js"></script>
+</body>
+</html>

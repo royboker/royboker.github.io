@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unit Converter | Roy Boker</title>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="converter.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            slate: {
+              800: '#1e293b',
+              900: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔄</text></svg>" />
+</head>
+<body class="bg-slate-900 text-slate-300 font-sans antialiased">
+  
+  <!-- Header -->
+  <header class="fixed w-full top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800 py-4">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold text-white flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <span class="text-2xl">🔥</span>
+        <span>Roy Boker</span>
+      </a>
+      <a href="/" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">← Back to Portfolio</a>
+    </div>
+  </header>
+
+  <main class="pt-32 pb-20 container mx-auto px-6 max-w-4xl">
+    <!-- App Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold text-white mb-4">🔄 Unit Converter</h1>
+      <p class="text-slate-400">Convert between different units instantly</p>
+    </div>
+
+    <!-- Converter Card -->
+    <div class="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl overflow-hidden shadow-2xl">
+      
+      <!-- Category Tabs -->
+      <div class="converter-tabs flex flex-wrap border-b border-slate-700">
+        <button class="tab-btn flex-1 py-4 px-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-700/50 transition-colors border-b-2 border-transparent focus:outline-none active" data-category="currency" style="border-color: #3b82f6; color: white;">💱 Currency</button>
+        <button class="tab-btn flex-1 py-4 px-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-700/50 transition-colors border-b-2 border-transparent focus:outline-none" data-category="temperature">🌡️ Temperature</button>
+        <button class="tab-btn flex-1 py-4 px-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-700/50 transition-colors border-b-2 border-transparent focus:outline-none" data-category="length">📏 Length</button>
+        <button class="tab-btn flex-1 py-4 px-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-700/50 transition-colors border-b-2 border-transparent focus:outline-none" data-category="weight">⚖️ Weight</button>
+        <button class="tab-btn flex-1 py-4 px-2 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-700/50 transition-colors border-b-2 border-transparent focus:outline-none" data-category="data">💾 Data</button>
+      </div>
+
+      <div class="p-8">
+        <!-- Currency Converter -->
+        <div class="converter-panel block" id="currency-panel">
+          <div class="flex flex-col md:flex-row gap-6 items-center">
+            <div class="flex-1 w-full">
+              <label class="block text-sm font-medium text-slate-400 mb-2">From</label>
+              <div class="flex gap-2">
+                <input type="number" id="currency-from-value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none" value="1" min="0" />
+                <select id="currency-from-unit" class="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none w-32">
+                  <option value="USD">USD</option>
+                  <option value="EUR">EUR</option>
+                  <option value="GBP">GBP</option>
+                  <option value="ILS">ILS</option>
+                  <option value="JPY">JPY</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="swap-btn p-3 bg-slate-700 rounded-full hover:bg-blue-600 transition-colors text-white" id="currency-swap">⇄</button>
+
+            <div class="flex-1 w-full">
+              <label class="block text-sm font-medium text-slate-400 mb-2">To</label>
+              <div class="flex gap-2">
+                <input type="number" id="currency-to-value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none" readonly />
+                <select id="currency-to-unit" class="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-blue-500 outline-none w-32">
+                  <option value="EUR">EUR</option>
+                  <option value="USD">USD</option>
+                  <option value="GBP">GBP</option>
+                  <option value="ILS">ILS</option>
+                  <option value="JPY">JPY</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <p class="mt-4 text-center text-sm text-slate-500" id="currency-rate">Loading exchange rates...</p>
+        </div>
+
+        <!-- Add other panels here (Temperature, Length, etc.) with same structure but hidden by default -->
+        <!-- For brevity, I'll rely on the existing JS logic but ensure the CSS classes match the Tailwind utility approach I added or keep original CSS working -->
+        
+        <!-- Placeholder for other panels to be visible when tab clicked (handled by JS) -->
+        <div class="converter-panel hidden" id="temperature-panel">
+            <!-- Temp Content -->
+             <div class="flex flex-col md:flex-row gap-6 items-center">
+                <div class="flex-1 w-full">
+                  <label class="block text-sm font-medium text-slate-400 mb-2">From</label>
+                  <div class="flex gap-2">
+                    <input type="number" id="temp-from-value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white" value="0" />
+                    <select id="temp-from-unit" class="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white w-32">
+                      <option value="celsius">Celsius</option>
+                      <option value="fahrenheit">Fahrenheit</option>
+                      <option value="kelvin">Kelvin</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="swap-btn p-3 bg-slate-700 rounded-full hover:bg-blue-600 transition-colors text-white" id="temp-swap">⇄</button>
+                <div class="flex-1 w-full">
+                  <label class="block text-sm font-medium text-slate-400 mb-2">To</label>
+                  <div class="flex gap-2">
+                    <input type="number" id="temp-to-value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white" readonly />
+                    <select id="temp-to-unit" class="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white w-32">
+                      <option value="fahrenheit">Fahrenheit</option>
+                      <option value="celsius">Celsius</option>
+                      <option value="kelvin">Kelvin</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+        </div>
+        
+        <div class="converter-panel hidden" id="length-panel">
+             <div class="flex flex-col md:flex-row gap-6 items-center">
+                <div class="flex-1 w-full">
+                  <label class="block text-sm font-medium text-slate-400 mb-2">From</label>
+                  <div class="flex gap-2">
+                    <input type="number" id="length-from-value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white" value="1" />
+                    <select id="length-from-unit" class="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white w-32">
+                      <option value="meter">Meter</option>
+                      <option value="kilometer">Kilometer</option>
+                      <option value="mile">Mile</option>
+                      <option value="foot">Foot</option>
+                      <option value="inch">Inch</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="swap-btn p-3 bg-slate-700 rounded-full hover:bg-blue-600 transition-colors text-white" id="length-swap">⇄</button>
+                <div class="flex-1 w-full">
+                  <label class="block text-sm font-medium text-slate-400 mb-2">To</label>
+                  <div class="flex gap-2">
+                    <input type="number" id="length-to-value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white" readonly />
+                    <select id="length-to-unit" class="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white w-32">
+                      <option value="foot">Foot</option>
+                      <option value="meter">Meter</option>
+                      <option value="kilometer">Kilometer</option>
+                      <option value="mile">Mile</option>
+                      <option value="inch">Inch</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+         <div class="converter-panel hidden" id="weight-panel">
+             <div class="flex flex-col md:flex-row gap-6 items-center">
+                <div class="flex-1 w-full">
+                  <label class="block text-sm font-medium text-slate-400 mb-2">From</label>
+                  <div class="flex gap-2">
+                    <input type="number" id="weight-from-value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white" value="1" />
+                    <select id="weight-from-unit" class="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white w-32">
+                      <option value="kilogram">Kg</option>
+                      <option value="pound">Lb</option>
+                      <option value="gram">Gram</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="swap-btn p-3 bg-slate-700 rounded-full hover:bg-blue-600 transition-colors text-white" id="weight-swap">⇄</button>
+                <div class="flex-1 w-full">
+                  <label class="block text-sm font-medium text-slate-400 mb-2">To</label>
+                  <div class="flex gap-2">
+                    <input type="number" id="weight-to-value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white" readonly />
+                    <select id="weight-to-unit" class="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white w-32">
+                      <option value="pound">Lb</option>
+                      <option value="kilogram">Kg</option>
+                      <option value="gram">Gram</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+         <div class="converter-panel hidden" id="data-panel">
+             <div class="flex flex-col md:flex-row gap-6 items-center">
+                <div class="flex-1 w-full">
+                  <label class="block text-sm font-medium text-slate-400 mb-2">From</label>
+                  <div class="flex gap-2">
+                    <input type="number" id="data-from-value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white" value="1" />
+                    <select id="data-from-unit" class="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white w-32">
+                      <option value="megabyte">MB</option>
+                      <option value="gigabyte">GB</option>
+                      <option value="terabyte">TB</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="swap-btn p-3 bg-slate-700 rounded-full hover:bg-blue-600 transition-colors text-white" id="data-swap">⇄</button>
+                <div class="flex-1 w-full">
+                  <label class="block text-sm font-medium text-slate-400 mb-2">To</label>
+                  <div class="flex gap-2">
+                    <input type="number" id="data-to-value" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white" readonly />
+                    <select id="data-to-unit" class="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white w-32">
+                      <option value="gigabyte">GB</option>
+                      <option value="megabyte">MB</option>
+                      <option value="terabyte">TB</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-8 text-center">
+    <p>© 2025 Roy Boker. All rights reserved.</p>
+  </footer>
+
+  <script src="converter.js"></script>
+  <script>
+    // Simple Tab Switching Logic (since we removed legacy dependencies)
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all tabs
+        document.querySelectorAll('.tab-btn').forEach(b => {
+            b.classList.remove('active');
+            b.style.borderColor = 'transparent';
+            b.style.color = '#94a3b8';
+        });
+        // Add active to clicked
+        btn.classList.add('active');
+        btn.style.borderColor = '#3b82f6';
+        btn.style.color = 'white';
+
+        // Hide all panels
+        document.querySelectorAll('.converter-panel').forEach(p => p.classList.add('hidden'));
+        document.querySelectorAll('.converter-panel').forEach(p => p.classList.remove('block'));
+        
+        // Show target panel
+        const category = btn.dataset.category;
+        const target = document.getElementById(`${category}-panel`);
+        if(target) {
+            target.classList.remove('hidden');
+            target.classList.add('block');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

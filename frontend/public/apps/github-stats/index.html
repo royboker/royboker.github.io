@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Stats | Roy Boker</title>
+  <meta name="description" content="Live stats from Roy Boker's GitHub profile - repos, languages, and activity." />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../../css/main.css" />
+  <link rel="stylesheet" href="github-stats.css" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../../" class="logo">
+        <span class="logo-icon">🔥</span>
+        <span>Roy Boker</span>
+      </a>
+
+      <nav class="nav">
+        <a href="../../index.html#about" class="nav-link">About</a>
+        <a href="../../projects.html" class="nav-link">Projects</a>
+        <a href="../" class="nav-link active">Apps</a>
+        <a href="../../index.html#contact" class="btn btn-primary btn-sm">Contact</a>
+      </nav>
+
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <a href="../../index.html#about" class="mobile-nav-link">About</a>
+    <a href="../../projects.html" class="mobile-nav-link">Projects</a>
+    <a href="../" class="mobile-nav-link">Apps</a>
+    <a href="../../index.html#contact" class="mobile-nav-link">Contact</a>
+  </nav>
+
+  <main class="app-main">
+    <div class="container">
+      <!-- App Header -->
+      <div class="app-header" data-animate="fade-up">
+        <a href="../" class="back-link">← Back to Apps</a>
+        <h1>📊 GitHub Dashboard</h1>
+        <p>Live stats from my GitHub profile</p>
+      </div>
+
+      <!-- Profile Card -->
+      <div class="profile-card card" id="profile-card" data-animate="fade-up">
+        <div class="profile-loading">
+          <div class="loading-spinner"></div>
+          <p>Loading profile...</p>
+        </div>
+        <div class="profile-content" style="display: none;">
+          <img id="avatar" class="profile-avatar" src="" alt="GitHub Avatar" />
+          <div class="profile-info">
+            <h2 id="name">Loading...</h2>
+            <p id="bio" class="profile-bio"></p>
+            <div class="profile-stats">
+              <div class="profile-stat">
+                <span class="stat-value" id="public-repos">-</span>
+                <span class="stat-label">Repos</span>
+              </div>
+              <div class="profile-stat">
+                <span class="stat-value" id="followers">-</span>
+                <span class="stat-label">Followers</span>
+              </div>
+              <div class="profile-stat">
+                <span class="stat-value" id="following">-</span>
+                <span class="stat-label">Following</span>
+              </div>
+            </div>
+            <a id="github-link" href="https://github.com/royboker" target="_blank" class="btn btn-primary btn-sm">
+              View Profile on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid" data-animate="fade-up">
+        <!-- Languages Chart -->
+        <div class="card chart-card">
+          <div class="card-header">
+            <h3>Languages Used</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="languages-chart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Repos -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Top Repositories</h3>
+          </div>
+          <div class="card-body" id="repos-list">
+            <div class="loading-placeholder">
+              <div class="skeleton" style="height: 60px; margin-bottom: 12px;"></div>
+              <div class="skeleton" style="height: 60px; margin-bottom: 12px;"></div>
+              <div class="skeleton" style="height: 60px; margin-bottom: 12px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="card" data-animate="fade-up">
+        <div class="card-header">
+          <h3>All Repositories</h3>
+        </div>
+        <div class="card-body">
+          <div id="all-repos" class="repos-grid">
+            <div class="loading-placeholder">
+              <div class="skeleton" style="height: 120px;"></div>
+              <div class="skeleton" style="height: 120px;"></div>
+              <div class="skeleton" style="height: 120px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Info -->
+      <div class="tech-info" data-animate="fade-up">
+        <h3>How It Works</h3>
+        <p>This dashboard fetches live data from the <strong>GitHub REST API</strong> and visualizes it using <strong>Chart.js</strong>. Data is cached locally to respect API rate limits.</p>
+        <div class="tech-badges">
+          <span class="badge">JavaScript</span>
+          <span class="badge badge-green">GitHub API</span>
+          <span class="badge badge-purple">Chart.js</span>
+          <span class="badge badge-orange">LocalStorage Cache</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Roy Boker. All rights reserved.</p>
+        <div class="social-links">
+          <a href="mailto:royboker15@gmail.com" class="social-link social-link-email" aria-label="Email">📧</a>
+          <a href="https://linkedin.com/in/roy-boker" target="_blank" class="social-link social-link-linkedin" aria-label="LinkedIn">💼</a>
+          <a href="https://github.com/royboker" target="_blank" class="social-link social-link-github" aria-label="GitHub">🐙</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="github-stats.js"></script>
+</body>
+</html>
