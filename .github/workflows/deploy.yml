@@ -38,8 +38,8 @@ jobs:
           cd frontend
           npm run build
         env:
-          # This should be updated once you have the Render backend URL
-          VITE_API_URL: ${{ secrets.VITE_API_URL || 'https://your-backend-url.onrender.com' }}
+          # Render backend URL
+          VITE_API_URL: ${{ secrets.VITE_API_URL || 'https://portfolio-backend-1u0v.onrender.com' }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
