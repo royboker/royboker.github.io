@@ -1,11 +1,9 @@
 import os
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
+from resend import Resend
 
 load_dotenv()
 
@@ -48,70 +46,46 @@ def send_message(msg: ContactMessage):
     print(f"From: {msg.name} ({msg.email})")
     print(f"Message: {msg.message[:100]}...")  # First 100 chars
     
-    sender_email = os.getenv("EMAIL_USER")
-    sender_password = os.getenv("EMAIL_PASS")
-    receiver_email = "royboker15@gmail.com" # Your personal email
+    # Get Resend API key from environment
+    resend_api_key = os.getenv("RESEND_API_KEY")
+    receiver_email = "royboker15@gmail.com"  # Your personal email
+    sender_email = "onboarding@resend.dev"  # Default Resend sender (you can change this later)
 
-    print(f"EMAIL_USER configured: {bool(sender_email)}")
-    print(f"EMAIL_PASS configured: {bool(sender_password)}")
+    print(f"RESEND_API_KEY configured: {bool(resend_api_key)}")
 
-    if not sender_email or not sender_password:
-        print("❌ ERROR: Email credentials not configured properly.")
-        print(f"EMAIL_USER: {'SET' if sender_email else 'MISSING'}")
-        print(f"EMAIL_PASS: {'SET' if sender_password else 'MISSING'}")
+    if not resend_api_key:
+        print("❌ ERROR: RESEND_API_KEY not configured.")
         return {"status": "error", "message": "Email service not configured. Please contact administrator."}
 
     try:
-        # Create message
-        message = MIMEMultipart()
-        message["From"] = sender_email
-        message["To"] = receiver_email
-        message["Subject"] = f"Portfolio Contact: {msg.name}"
+        # Initialize Resend client
+        resend = Resend(api_key=resend_api_key)
         
-        body = f"""
-        New message from Portfolio Website:
-        
-        Name: {msg.name}
-        Email: {msg.email}
-        
-        Message:
-        {msg.message}
-        """
-        message.attach(MIMEText(body, "plain"))
+        # Create email body
+        email_body = f"""
+New message from Portfolio Website:
 
-        # Connect to Gmail SMTP
-        # Try STARTTLS (port 587) first, as it's more compatible with Render's network
-        print("Connecting to Gmail SMTP (STARTTLS on port 587)...")
-        try:
-            with smtplib.SMTP("smtp.gmail.com", 587, timeout=10) as server:
-                print("Starting TLS...")
-                server.starttls()
-                print("Logging in to SMTP server...")
-                server.login(sender_email, sender_password)
-                print("Sending email...")
-                server.send_message(message)
-                print("✅ Email sent successfully!")
-        except Exception as tls_error:
-            print(f"STARTTLS failed: {tls_error}")
-            print("Trying SSL (port 465) as fallback...")
-            # Fallback to SSL on port 465
-            with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=10) as server:
-                print("Logged in to SMTP server (SSL)...")
-                server.login(sender_email, sender_password)
-                print("Sending email...")
-                server.send_message(message)
-                print("✅ Email sent successfully!")
-            
+Name: {msg.name}
+Email: {msg.email}
+
+Message:
+{msg.message}
+"""
+        
+        print("Sending email via Resend...")
+        # Send email using Resend
+        result = resend.emails.send({
+            "from": sender_email,
+            "to": receiver_email,
+            "subject": f"Portfolio Contact: {msg.name}",
+            "text": email_body,
+        })
+        
+        print(f"✅ Email sent successfully via Resend! ID: {result.get('id', 'N/A')}")
         return {"status": "success", "message": "Email sent successfully!"}
 
-    except smtplib.SMTPAuthenticationError as e:
-        print(f"❌ SMTP Authentication Error: {e}")
-        return {"status": "error", "message": "Authentication failed. Please check email credentials."}
-    except smtplib.SMTPException as e:
-        print(f"❌ SMTP Error: {e}")
-        return {"status": "error", "message": "Failed to send email due to SMTP error."}
     except Exception as e:
-        print(f"❌ Unexpected Error sending email: {type(e).__name__}: {e}")
+        print(f"❌ Error sending email via Resend: {type(e).__name__}: {e}")
         import traceback
         traceback.print_exc()
         # In production, don't expose error details to client
