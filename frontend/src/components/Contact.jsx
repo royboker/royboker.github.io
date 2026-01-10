@@ -24,16 +24,33 @@ const Contact = () => {
     setStatus('success');
     setFormData({ name: '', email: '', message: '' });
 
-    // Optionally try to send to backend in background (silent failure)
-    // This way if backend is connected, it will work, but user always sees success
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8005';
+    // Try to send to backend in background
+    // Production URL or fallback to localhost for development
+    const API_URL = import.meta.env.VITE_API_URL || 
+                    (window.location.hostname === 'royboker.github.io' 
+                      ? 'https://portfolio-backend-1u0v.onrender.com' 
+                      : 'http://localhost:8005');
+    
     fetch(`${API_URL}/contact`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
-    }).catch(() => {
+    })
+    .then(response => {
+      if (!response.ok) {
+        console.error('Backend response error:', response.status, response.statusText);
+      } else {
+        return response.json();
+      }
+    })
+    .then(data => {
+      if (data) {
+        console.log('Email sent successfully:', data);
+      }
+    })
+    .catch(error => {
       // Silently fail - user already sees success message
-      console.log('Backend not available - form submitted successfully');
+      console.error('Backend not available or error:', error);
     });
   };
 
