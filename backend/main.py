@@ -12,19 +12,20 @@ load_dotenv()
 app = FastAPI()
 
 # Configure CORS
+# Production origins - only allow your GitHub Pages site
 origins = [
-    "http://localhost:5173",
-    "http://localhost:8001",
-    "http://localhost:8005", # Added port 8005
-    "https://royboker.github.io"
+    "https://royboker.github.io",
+    "http://localhost:5173",  # Keep for local dev
+    "http://localhost:8001",  # Keep for local dev
+    "http://localhost:8005",  # Keep for local dev
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # For dev, allow all. Restrict in prod.
+    allow_origins=origins,  # Restricted to specific origins for security
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],  # Only necessary methods
+    allow_headers=["Content-Type", "Accept"],
 )
 
 class ContactMessage(BaseModel):
@@ -78,5 +79,6 @@ def send_message(msg: ContactMessage):
 
     except Exception as e:
         print(f"Error sending email: {e}")
-        # In production, don't expose error details to client, but for dev it helps
-        return {"status": "error", "message": f"Failed to send email: {str(e)}"}
+        # In production, don't expose error details to client
+        # Return generic error message for security
+        return {"status": "error", "message": "Failed to send email. Please try again later."}
