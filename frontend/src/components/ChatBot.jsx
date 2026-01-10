@@ -7,7 +7,7 @@ const ChatBot = () => {
   const [question, setQuestion] = useState('');
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [questionsRemaining, setQuestionsRemaining] = useState(10);
+  const [questionsRemaining, setQuestionsRemaining] = useState(5);
   const messagesEndRef = useRef(null);
   const messagesContainerRef = useRef(null);
 
@@ -138,7 +138,7 @@ const ChatBot = () => {
     setSessionId(null);
     setMessages([]);
     setFile(null);
-    setQuestionsRemaining(10);
+    setQuestionsRemaining(5);
     setQuestion('');
   };
 
@@ -156,7 +156,7 @@ const ChatBot = () => {
             Upload a PDF or TXT file and ask questions about it
           </p>
           <p className="text-gray-500 text-sm mt-2">
-            Free to use • Up to 10 questions per document
+            Free to use • Up to 5 questions per document
           </p>
         </div>
 

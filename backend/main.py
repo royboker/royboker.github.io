@@ -43,7 +43,7 @@ app.add_middleware(
 # In-memory storage for chat sessions (use database in production)
 # Format: {session_id: {"document_text": str, "questions_asked": int, "created_at": datetime, "filename": str}}
 chat_sessions = {}
-MAX_QUESTIONS_PER_SESSION = 10  # Limit questions per session
+MAX_QUESTIONS_PER_SESSION = 5  # Limit questions per session
 
 class ContactMessage(BaseModel):
     name: str
@@ -285,18 +285,35 @@ Please provide a friendly, conversational overview that:
 
 Write as if you're explaining it to a friend in a casual conversation."""
                 
-                summary_response = model.generate_content(summary_prompt)
-                summary = summary_response.text if summary_response.text else None
-                
-                if summary:
-                    chat_sessions[session_id]["auto_summary"] = summary
-                    chat_sessions[session_id]["questions_asked"] = 1  # Count the auto-summary as first question
-                    print("✅ Automatic summary generated successfully")
-                else:
-                    print("⚠️ Could not generate summary")
+                try:
+                    summary_response = model.generate_content(summary_prompt)
+                    summary = summary_response.text if summary_response.text else None
+                    
+                    if summary:
+                        chat_sessions[session_id]["auto_summary"] = summary
+                        chat_sessions[session_id]["questions_asked"] = 1  # Count the auto-summary as first question
+                        print("✅ Automatic summary generated successfully")
+                    else:
+                        print("⚠️ Could not generate summary")
+                except Exception as api_error:
+                    error_str = str(api_error)
+                    # Check if it's a quota/rate limit error (429)
+                    if "429" in error_str or "quota" in error_str.lower() or "rate" in error_str.lower():
+                        print(f"⚠️ Quota exceeded for automatic summary (not shown to user): {error_str[:200]}")
+                        # Continue without summary if quota exceeded
+                        summary = None
+                    else:
+                        # For other errors, log and continue
+                        print(f"⚠️ Error generating automatic summary: {api_error}")
+                        summary = None
             except Exception as e:
-                print(f"⚠️ Error generating automatic summary: {e}")
+                error_str = str(e)
+                if "429" in error_str or "quota" in error_str.lower() or "rate" in error_str.lower():
+                    print(f"⚠️ Quota exceeded for automatic summary (hidden from user): {error_str[:300]}")
+                else:
+                    print(f"⚠️ Error generating automatic summary: {error_str[:200]}")
                 # Continue even if summary generation fails
+                summary = None
         
         return {
             "status": "success",
@@ -364,9 +381,20 @@ Please provide a clear and concise answer based on the document content only. If
 
         # Get response from Gemini
         print(f"Sending request to Gemini using model: {GEMINI_MODEL}...")
-        response = model.generate_content(prompt)
-        
-        answer = response.text if response.text else "I couldn't generate a response. Please try again."
+        try:
+            response = model.generate_content(prompt)
+            answer = response.text if response.text else "I couldn't generate a response. Please try again."
+        except Exception as api_error:
+            error_str = str(api_error)
+            # Check if it's a quota/rate limit error (429)
+            if "429" in error_str or "quota" in error_str.lower() or "rate" in error_str.lower():
+                print(f"❌ Quota exceeded error (hidden from user): {error_str[:300]}")
+                return {
+                    "status": "error",
+                    "message": "AI service is currently unavailable. Please try again later."
+                }
+            # Re-raise other errors to be handled by outer exception handler
+            raise
         
         # Update question count
         session["questions_asked"] += 1
@@ -381,10 +409,19 @@ Please provide a clear and concise answer based on the document content only. If
         }
     
     except Exception as e:
+        error_str = str(e)
+        # Check if it's a quota error that wasn't caught before
+        if "429" in error_str or "quota" in error_str.lower() or "rate" in error_str.lower():
+            print(f"❌ Quota exceeded error (hidden from user): {error_str[:300]}")
+            return {
+                "status": "error",
+                "message": "AI service is currently unavailable. Please try again later."
+            }
+        
         print(f"❌ Error asking question: {e}")
         import traceback
         traceback.print_exc()
-        return {"status": "error", "message": f"Error processing question: {str(e)}"}
+        return {"status": "error", "message": "Error processing question. Please try again later."}
 
 @app.get("/chat/session/{session_id}")
 def get_session_info(session_id: str):
