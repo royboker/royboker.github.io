@@ -37,6 +37,11 @@ class ContactMessage(BaseModel):
 def read_root():
     return {"status": "online", "service": "Roy Boker Portfolio API"}
 
+@app.get("/health")
+def health_check():
+    """Health check endpoint for Render"""
+    return {"status": "healthy", "service": "Portfolio Backend"}
+
 @app.post("/contact")
 def send_message(msg: ContactMessage):
     print(f"=== Incoming contact request ===")
@@ -75,13 +80,27 @@ def send_message(msg: ContactMessage):
         message.attach(MIMEText(body, "plain"))
 
         # Connect to Gmail SMTP
-        print("Connecting to Gmail SMTP...")
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            print("Logged in to SMTP server")
-            server.login(sender_email, sender_password)
-            print("Sending email...")
-            server.send_message(message)
-            print("✅ Email sent successfully!")
+        # Try STARTTLS (port 587) first, as it's more compatible with Render's network
+        print("Connecting to Gmail SMTP (STARTTLS on port 587)...")
+        try:
+            with smtplib.SMTP("smtp.gmail.com", 587, timeout=10) as server:
+                print("Starting TLS...")
+                server.starttls()
+                print("Logging in to SMTP server...")
+                server.login(sender_email, sender_password)
+                print("Sending email...")
+                server.send_message(message)
+                print("✅ Email sent successfully!")
+        except Exception as tls_error:
+            print(f"STARTTLS failed: {tls_error}")
+            print("Trying SSL (port 465) as fallback...")
+            # Fallback to SSL on port 465
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=10) as server:
+                print("Logged in to SMTP server (SSL)...")
+                server.login(sender_email, sender_password)
+                print("Sending email...")
+                server.send_message(message)
+                print("✅ Email sent successfully!")
             
         return {"status": "success", "message": "Email sent successfully!"}
 
