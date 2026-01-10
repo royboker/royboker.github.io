@@ -1,10 +1,58 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import JSONFormatter from './apps/JSONFormatter';
 import RegexTester from './apps/RegexTester';
 import EncoderDecoder from './apps/EncoderDecoder';
 import QRCodeGenerator from './apps/QRCodeGenerator';
 
 const AppsSection = () => {
+  const appsTracked = useRef({});
+  
+  const API_URL = import.meta.env.VITE_API_URL || 
+                  (window.location.hostname === 'royboker.github.io' 
+                    ? 'https://portfolio-backend-1u0v.onrender.com' 
+                    : 'http://localhost:8005');
+
+  // Track when user interacts with any app
+  const trackAppUsage = (appName) => {
+    // Track each app only once per session
+    if (appsTracked.current[appName]) return;
+    
+    appsTracked.current[appName] = true;
+    
+    // Send notification (non-blocking)
+    fetch(`${API_URL}/analytics/event`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        event_type: 'app_used',
+        app_name: appName 
+      }),
+    }).catch(() => {
+      // Silently fail - analytics shouldn't break the site
+    });
+  };
+
+  // Track app usage when component mounts (means user scrolled to this section)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // User scrolled to apps section - could track this if needed
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const section = document.getElementById('apps');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="apps" className="py-20 bg-[#0f172a] relative overflow-hidden">
        {/* Background Elements */}
@@ -21,7 +69,10 @@ const AppsSection = () => {
         <div className="grid lg:grid-cols-2 gap-6 max-w-7xl mx-auto">
           
           {/* App 1: JSON Formatter */}
-          <div className="h-[500px] neon-border group">
+          <div 
+            className="h-[500px] neon-border group"
+            onClick={() => trackAppUsage('JSON Formatter')}
+          >
             <div className="neon-inner bg-slate-900/50 backdrop-blur-sm h-full rounded-xl overflow-hidden flex flex-col">
                 <div className="absolute inset-0 bg-grid-slate-800/[0.2] bg-[size:20px_20px] pointer-events-none"></div>
                 <div className="relative z-10 h-full p-6 flex flex-col">
@@ -31,7 +82,10 @@ const AppsSection = () => {
           </div>
 
           {/* App 2: Regex Tester */}
-          <div className="h-[500px] neon-border neon-border-purple group">
+          <div 
+            className="h-[500px] neon-border neon-border-purple group"
+            onClick={() => trackAppUsage('Regex Tester')}
+          >
             <div className="neon-inner bg-slate-900/50 backdrop-blur-sm h-full rounded-xl overflow-hidden flex flex-col">
                 <div className="absolute inset-0 bg-grid-slate-800/[0.2] bg-[size:20px_20px] pointer-events-none"></div>
                  <div className="relative z-10 h-full p-6 flex flex-col">
@@ -41,7 +95,10 @@ const AppsSection = () => {
           </div>
 
           {/* App 3: Encoder/Decoder */}
-          <div className="h-[500px] neon-border neon-border-green group">
+          <div 
+            className="h-[500px] neon-border neon-border-green group"
+            onClick={() => trackAppUsage('Encoder/Decoder')}
+          >
             <div className="neon-inner bg-slate-900/50 backdrop-blur-sm h-full rounded-xl overflow-hidden flex flex-col">
                 <div className="absolute inset-0 bg-grid-slate-800/[0.2] bg-[size:20px_20px] pointer-events-none"></div>
                  <div className="relative z-10 h-full p-6 flex flex-col">
@@ -51,7 +108,10 @@ const AppsSection = () => {
           </div>
 
           {/* App 4: QR Code Generator */}
-          <div className="h-[500px] neon-border neon-border-orange group">
+          <div 
+            className="h-[500px] neon-border neon-border-orange group"
+            onClick={() => trackAppUsage('QR Code Generator')}
+          >
             <div className="neon-inner bg-slate-900/50 backdrop-blur-sm h-full rounded-xl overflow-hidden flex flex-col">
                 <div className="absolute inset-0 bg-grid-slate-800/[0.2] bg-[size:20px_20px] pointer-events-none"></div>
                  <div className="relative z-10 h-full p-6 flex flex-col">

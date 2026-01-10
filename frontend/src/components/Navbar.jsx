@@ -17,6 +17,7 @@ const Navbar = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Apps', href: '#apps' }, // Updated to scroll to new Apps section
+    { name: 'ChatBot', href: '#chatbot' },
     { name: 'Contact', href: '#contact' },
   ];
 
