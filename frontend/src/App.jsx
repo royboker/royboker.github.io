@@ -6,7 +6,7 @@ import Skills from './components/Skills';
 import Experience from './components/Experience'; // Import new section
 import Projects from './components/Projects';
 import AppsSection from './components/AppsSection';
-import ChatBot from './components/ChatBot';
+// import ChatBot from './components/ChatBot'; // Temporarily disabled
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -38,7 +38,7 @@ function App() {
         <Skills />
         <Projects />
         <AppsSection />
-        <ChatBot />
+        {/* <ChatBot /> Temporarily disabled */}
         <Contact />
       </main>
       <Footer />
