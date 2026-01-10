@@ -3,9 +3,12 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
-from resend import Resend
+import resend
 
 load_dotenv()
+
+# Initialize Resend
+resend.api_key = os.getenv("RESEND_API_KEY")
 
 app = FastAPI()
 
@@ -46,7 +49,7 @@ def send_message(msg: ContactMessage):
     print(f"From: {msg.name} ({msg.email})")
     print(f"Message: {msg.message[:100]}...")  # First 100 chars
     
-    # Get Resend API key from environment
+    # Check if Resend API key is configured
     resend_api_key = os.getenv("RESEND_API_KEY")
     receiver_email = "royboker15@gmail.com"  # Your personal email
     sender_email = "onboarding@resend.dev"  # Default Resend sender (you can change this later)
@@ -58,9 +61,6 @@ def send_message(msg: ContactMessage):
         return {"status": "error", "message": "Email service not configured. Please contact administrator."}
 
     try:
-        # Initialize Resend client
-        resend = Resend(api_key=resend_api_key)
-        
         # Create email body
         email_body = f"""
 New message from Portfolio Website:
@@ -73,13 +73,15 @@ Message:
 """
         
         print("Sending email via Resend...")
-        # Send email using Resend
-        result = resend.emails.send({
+        # Send email using Resend API
+        params = {
             "from": sender_email,
             "to": receiver_email,
             "subject": f"Portfolio Contact: {msg.name}",
             "text": email_body,
-        })
+        }
+        
+        result = resend.Emails.send(params)
         
         print(f"✅ Email sent successfully via Resend! ID: {result.get('id', 'N/A')}")
         return {"status": "success", "message": "Email sent successfully!"}
