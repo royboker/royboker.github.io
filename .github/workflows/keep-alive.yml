@@ -1,11 +1,7 @@
 name: Keep Backend Alive
 
 on:
-  schedule:
-    # Run every 5 minutes to keep Render free tier awake
-    # Cron format: minute hour day month weekday
-    - cron: '*/5 * * * *'
-  workflow_dispatch: # Allow manual trigger
+  workflow_dispatch: # Run only when you click "Run workflow" in Actions
 
 jobs:
   ping:
